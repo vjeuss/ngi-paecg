@@ -1,0 +1,164 @@
+
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta name='pisp' content='ws://3.10.208.186:3100'>
+	<meta name="lastPolicyUpdateDate" content="2020-12-20">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.5.6/dialog-polyfill.min.js" integrity="sha512-qUIG93zKzcLBVD5RGRbx2PBmbVRu+tJIl+EPLTus0z8I1AMru9sQYdlf6cBacSzYmZVncB9rcc8rYBnazqgrxA==" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.5.6/dialog-polyfill.min.css" integrity="sha512-J2+1q+RsZuJXabBfH1q/fgRr6jMy9By5SwVLk7bScEW7NFJkMUXxfeOyyxtDe6fsaJ4jsciexSlGrPYn9YbBIg==" crossorigin="anonymous" />
+  <style type="text/css">
+    body {
+        height: 100vh;
+        max-width: 800px;
+        margin: auto;
+    }
+    form {
+        width: 400px;
+    }
+    footer {
+        border-top: 2px solid black;
+        margin-top: 5px;
+    }
+    #record {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- Notes
+    Dialogs with type "consent-dialog" are associated with consent requests.
+    There is no explicit "notice" component because the entire dialog is itself a notice.
+    Within the dialog, each "consent-request" element represents individual choices for consent, or in other words, instances of consent.
+    For UI/UX reasons, there can be a common "agree all" button, but each consent request must have its own input for indicating choice.
+    The information associated with consent is specified using data attributes.
+    These are:
+        purpose -> value of element
+        processing -> value of element
+            involves -> string specifying conditions of processing, such as profiling, or matching, or large scale
+        personal-data -> value of element
+            is-sensitive -> boolean attribute for personal data
+            is-PII -> boolean attribute for personal data
+    
+    Alternatives to using data-* attributes:
+    1) JSON-LD data in script at the top of page
+    - pros: ready to use data with semantics
+    - cons: every page has to load the script, data is disassociated from the actual consent dialogue
+    2) schema.org with microdata, RDFa
+    - pros: embedded data with semantics, standardisation through schema.org
+    - cons: difficult to parse since structure is arbitrary
+ -->
+
+<dialog id="consent-dialog" open data-type="consent-dialog" data-policy="privacy-policy" data-terms="terms" data-controller="controller" data-contact="contact" data-address="address">
+    <form method="dialog" target="_self">
+        <h3>Consent Request</h3>
+        <fieldset data-type="consent-request">
+            <details>
+                <summary>
+                    <input id="marketing-checkbox" name="input-marketing" type="checkbox" data-type="consent-choice">
+                    <label for="marketing-checkbox">Marketing</label>
+                </summary>
+                <p>
+                    We <span data-type="processing">collect</span>, <span data-type="processing">store</span>, and <span data-type="processing" data-context="profiling">use</span> your <span data-type="personal-data" data-context="PII">email</span> for <span data-type="purpose">Marketing</span>. We will store your data for <span data-type="data-storage-duration">2 years</span>.
+                </p>
+            </details>
+        </fieldset>
+        <fieldset data-type="consent-request">
+            <details>
+                <summary>
+                    <input id="analytics-checkbox" name="input-analytics" type="checkbox" data-type="consent-choice">
+                    <label for="analytics-checkbox">Analytics</label>
+                </summary>
+                <p>
+                    We would like to <span data-type="processing">collect</span> and <span data-type="processing">use</span> data about your <span data-type="personal-data">usage of our website</span> for <span data-type="purpose">Analytics</span> and <span data-type="purpose">Improving our services</span>. This is carried out through <a href="https://marketingplatform.google.com/about/analytics/" data-type="processor">Google Analytics</a>.
+                </p>
+            </details>
+        </fieldset>
+        <fieldset>
+            <details>
+                <summary>Withdrawing your consent</summary>
+                <p>You can withdraw your consent at any time by interacting with <a href="/#consent-dialog" data-type="consent-withdrawal">this dialog</a>.</p>
+            </details>
+        </fieldset>
+        <fieldset>
+            <input type="submit" data-type="consent-submit" value="Submit Choices">
+        </fieldset>
+    </form>
+</dialog>
+
+<p>Lorem ipsum dolor sit amet. Hic dolor labore est minima harum et mollitia consequuntur et autem galisum ut dolore adipisci ut distinctio atque. Vel ipsum blanditiis est quia necessitatibus sit autem temporibus est doloremque nobis est explicabo atque et fugiat inventore. Quo consectetur galisum eos animi quos ab enim quas eum iure magni est consequatur distinctio. Ab molestiae iure et voluptas voluptates est error exercitationem ut ullam accusamus ut sunt voluptatem? Et dignissimos adipisci eos magnam fugiat ut porro aliquam ex rerum blanditiis qui minima sapiente ex nulla galisum. Et dolorem iure cum voluptas quas ut earum laudantium et neque sapiente et corrupti magni ut officiis voluptate! Ab soluta quas eum doloribus quam et aliquam reprehenderit ut voluptas neque est officia dolor. Et ipsam nesciunt qui maxime voluptatem in voluptatum vitae qui molestias dolorem et nulla laborum. Et enim atque id ipsa ullam nam quibusdam sint. </p><p>Sed numquam fugit et explicabo unde ad temporibus sint! Et ipsam dolorum et tenetur similique ut consequuntur fuga. Eum perspiciatis aperiam est doloremque enim et animi nemo ut consectetur consequatur est adipisci omnis ut quae minima aut incidunt galisum. Aut laborum placeat aut esse tenetur sit veritatis cupiditate aut aliquid corrupti est sint molestiae qui optio doloremque sed excepturi aliquam? Non nemo tenetur et quasi internos At ratione omnis. </p><p>Et rerum architecto est perferendis sapiente aut dolor debitis rem eius vitae est perspiciatis porro ab vitae galisum qui rerum omnis. Aut facere unde est praesentium enim qui Quis dolores non consequatur dolor. Ut aspernatur laudantium ex dicta sint 33 nihil deserunt et iste sint ea quia aspernatur rem soluta sunt aut itaque ducimus. Ad nulla voluptatem et impedit cumque in molestias fugit et temporibus animi ex asperiores omnis sed enim placeat. Ut totam praesentium ea molestias itaque id impedit ullam ut omnis officiis ut enim autem sit aperiam esse. Qui sapiente voluptates aut possimus molestiae At quos neque vel possimus corporis eos vero quos aut pariatur autem in doloremque omnis. Et quia facilis eos rerum voluptas hic dolorem quisquam. Ut consectetur sunt qui distinctio nesciunt ex nihil consequatur non rerum sequi qui incidunt deleniti eos iusto quae. Aut consequatur fugiat quo placeat molestiae ut nisi rerum vel excepturi omnis. </p>
+<p>Lorem ipsum dolor sit amet. Hic dolor labore est minima harum et mollitia consequuntur et autem galisum ut dolore adipisci ut distinctio atque. Vel ipsum blanditiis est quia necessitatibus sit autem temporibus est doloremque nobis est explicabo atque et fugiat inventore. Quo consectetur galisum eos animi quos ab enim quas eum iure magni est consequatur distinctio. Ab molestiae iure et voluptas voluptates est error exercitationem ut ullam accusamus ut sunt voluptatem? Et dignissimos adipisci eos magnam fugiat ut porro aliquam ex rerum blanditiis qui minima sapiente ex nulla galisum. Et dolorem iure cum voluptas quas ut earum laudantium et neque sapiente et corrupti magni ut officiis voluptate! Ab soluta quas eum doloribus quam et aliquam reprehenderit ut voluptas neque est officia dolor. Et ipsam nesciunt qui maxime voluptatem in voluptatum vitae qui molestias dolorem et nulla laborum. Et enim atque id ipsa ullam nam quibusdam sint. </p><p>Sed numquam fugit et explicabo unde ad temporibus sint! Et ipsam dolorum et tenetur similique ut consequuntur fuga. Eum perspiciatis aperiam est doloremque enim et animi nemo ut consectetur consequatur est adipisci omnis ut quae minima aut incidunt galisum. Aut laborum placeat aut esse tenetur sit veritatis cupiditate aut aliquid corrupti est sint molestiae qui optio doloremque sed excepturi aliquam? Non nemo tenetur et quasi internos At ratione omnis. </p><p>Et rerum architecto est perferendis sapiente aut dolor debitis rem eius vitae est perspiciatis porro ab vitae galisum qui rerum omnis. Aut facere unde est praesentium enim qui Quis dolores non consequatur dolor. Ut aspernatur laudantium ex dicta sint 33 nihil deserunt et iste sint ea quia aspernatur rem soluta sunt aut itaque ducimus. Ad nulla voluptatem et impedit cumque in molestias fugit et temporibus animi ex asperiores omnis sed enim placeat. Ut totam praesentium ea molestias itaque id impedit ullam ut omnis officiis ut enim autem sit aperiam esse. Qui sapiente voluptates aut possimus molestiae At quos neque vel possimus corporis eos vero quos aut pariatur autem in doloremque omnis. Et quia facilis eos rerum voluptas hic dolorem quisquam. Ut consectetur sunt qui distinctio nesciunt ex nihil consequatur non rerum sequi qui incidunt deleniti eos iusto quae. Aut consequatur fugiat quo placeat molestiae ut nisi rerum vel excepturi omnis. </p>
+
+<footer>
+    <p>
+        <a href="/" id="controller">Acme Inc.</a>
+        Address: <span id="address">Moon rocks, Luna.</span>
+        Contact: <span id="contact">000-000-000</span>
+        <a href="/terms" id="terms">Terms and Conditions</a>
+        <a href="/privacy.html" id="privacy-policy">Privacy Policy</a>
+    </p>
+</footer>
+
+<button id="record" onclick="gatherReceiptData();">Generate Receipt</button>
+
+<script type="text/javascript">
+(function() {
+    // polyfill for browsers that do not support dialog
+    var dialog = document.querySelector('dialog');
+    dialogPolyfill.registerDialog(dialog);
+})();
+
+function gatherReceiptData() {
+    // retrieve metadata from page for receipt generation
+    console.log("Function collects data from elements on page");
+    var consent_dialog = document.querySelector("[data-type='consent-dialog']");
+
+    // the consent map is akin to PII in existing browser addon code
+    // it represents the data that is captured within a record/receipt
+    // it is based on a lot of assumptions, e.g. single controller
+    var consent = {
+        // data common to all choices on page
+        "controller": {
+            "name": document.getElementById(consent_dialog.getAttribute('data-controller')).textContent,
+            "contact": document.getElementById(consent_dialog.getAttribute('data-contact')).textContent,
+            "address": document.getElementById(consent_dialog.getAttribute('data-address')).textContent,
+            "url": document.getElementById(consent_dialog.getAttribute('data-controller')).href,
+            "privacy_policy": document.getElementById(consent_dialog.getAttribute('data-policy')).href,
+            "terms": document.getElementById(consent_dialog.getAttribute('data-terms')).href
+        },
+        "rights": {
+            "withdrawal": consent_dialog.querySelector("[data-type='consent-withdrawal'").href
+        },
+        // instances represent each independent choice for consent
+        "instances": [],
+        // status of consent dialog as a whole 
+        // in relevance to when the record is created
+        // could be first request, or given, or subsequent modification
+        "status": "requested"
+    };
+
+
+    var consent_fields = document.querySelectorAll("[data-type='consent-request']");
+    for (var fields of consent_fields) {
+        var instance = {
+            "choice_indication": fields.querySelector("[data-type='consent-choice']").getAttribute('type'),
+            "consent_value": fields.querySelector("[data-type='consent-choice']").checked,
+            "purposes": Array.from(fields.querySelectorAll("[data-type='purpose']")).map(x => x.textContent),
+            "processing": Array.from(fields.querySelectorAll("[data-type='processing']")).map(x => x.textContent),
+            "processing_conditions": Array.from(fields.querySelectorAll("[data-type='processing'][data-context]")).map(x => x.getAttribute("data-context")),
+            "personal_data": Array.from(fields.querySelectorAll("[data-type='personal-data']")).map(x => [x.textContent, x.getAttribute("data-context")]),
+            "processors": Array.from(fields.querySelectorAll("[data-type='processor']")).map(x => [x.textContent, x.href]),
+        };
+        consent.instances.push(instance)
+    }
+    
+    // represents gathered information
+    console.info(consent);
+}
+</script>
+</body>
+</html>

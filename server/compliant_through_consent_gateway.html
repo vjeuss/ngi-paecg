@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="utf-8">
+  <meta name="pisp" content="Consent Gateway"
+  <meta name="lastPolicyUpdateDate" content="2020-12-20">
+    <link rel="stylesheet" href="form.css">
+    <!-- Cryptico library for RSA: referenced from cdnjs.com/libraries/cryptico -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/aes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/aes.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/api.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/cryptico.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/cryptico.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/hash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/hash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/jsbn.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/jsbn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/random.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/random.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/rsa.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cryptico/0.0.1343522940/rsa.min.js"></script>
+    
+    <!-- Node forge library for Signing and Verification of keys -->
+    <script src="https://cdn.jsdelivr.net/npm/node-forge@0.7.0/dist/forge.min.js"></script>
+</head>
+
+<body>
+
+    <div class="form-style-8" style="margin-left: auto; margin-right: auto; align: center; width: 50%; top: 10%;">
+      <h2>This is a form:</h2>
+      <form>
+        <input type="text" name="field1" id="fname" placeholder="First Name" />
+        <input type="text" name="field1" id="lname" placeholder="Last Name" />
+        <input type="email" name="field2" id="email" placeholder="Email" /><br>
+        
+        <!--<input type="checkbox" name="Privacy Policy" value="Agreed" checked="checked">Accept Privacy Policy-->
+        <input type="button" value="Submit" id="Submit" />&nbsp;
+        <br>By clicking submit, you are accepting our <a href="PrivacyPolicy.txt" download="PrivacyPolicy.txt">Privacy Policy</a>
+        </button>
+        <br><br><br>
+
+
+
+
+
+        <br><br><br>
+        <br><br><br>
+
+        <!--
+        <input type="button" value="Submit" id="Submit" />&nbsp;
+        <input type="button" value="Joint" id="Joint" />&nbsp;
+        <input type="button" value="Send"  id="Send"/>&nbsp;
+        <input type="button" value="Receipt"  id="Receipt" />&nbsp;
+        <input type="button" value="Done" id="Done" /><br><br>
+        <br>VJ buttons:<br/>
+        -->
+        <input style="font-size: 10px; padding: 3px 3px;" type="button" value="Setup" id="setup" />&nbsp;
+        <input style="font-size: 10px; padding: 3px 3px;" type="button" value="msg01" id="msg1" />&nbsp;
+        <input style="font-size: 10px; padding: 3px 3px;" type="button" value="msg02" id="msg2" />&nbsp;
+        <!--<input type="button" value="send test message" id="msgtest" /><br>-->        
+        <br><br><br>
+      </form>
+    </div>
+    
+    
+ 
+
+ <script src="paecg.js"> </script>
+  <script> 
+  var details={
+    'all_receipt_data':{
+		'piicontrollers':[{
+			"name": "Acme Inc.",
+			"localid": "PIIC-A",
+			"address": "Wonderland",
+			"url": "http://example.com/",
+			"contact": {
+				"phone": "000",
+				"email": "acme@example.com"
+			},
+			"policies": {
+				"privacy": "http://example.com/privacy",
+				"termsconditions": "http://example.com/tandc"
+			}
+		}]
+	},
+    'consent_submission_elements':{'Submit':'Accept'},
+    'user_inputs':['fname','lname','email'],
+    'javascript':['http://3.10.208.186/updates/js/one.js','http://3.10.208.186/updates/js/two.js'],
+    'policyurl':['http://3.10.208.186/updates/policy/one.html','http://3.10.208.186/updates/policy/two.html']
+  };
+  var paecg=new PaECG(details);
+  paecg.setup();
+  </script>
+    
+    
+    
+ </body>
+ 
+ <!-- THE COMMENT SECTION:
+ 
+ 10000 words:
+ 
+ Tristique imperdiet ad. Eleifend donec auctor. Turpis tempus. Litora. Aliquet maecenas ullamcorper orci donec ac in congue placerat vestibulum, penatibus at fermentum Erat, integer commodo Torquent, nisl platea augue est vel orci vitae lectus vestibulum magna morbi interdum Proin rutrum. Diam. Laoreet tincidunt semper. Purus mi orci lacinia nonummy curae; mauris porta, hymenaeos nullam facilisis vestibulum aenean dictum lacus facilisi malesuada feugiat libero pulvinar pede nec iaculis, tempor nullam quam sit sollicitudin dignissim. Praesent potenti proin congue tortor convallis, integer laoreet libero lectus maecenas potenti ullamcorper montes praesent netus 
+-->
+
+

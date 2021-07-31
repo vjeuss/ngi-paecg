@@ -1,0 +1,13 @@
+body {
+    min-width:500px;
+}
+
+.receipt_file {
+	background-color:#dbdee6;
+	margin-left:10px;
+	margin-bottom:5px;
+}
+
+.receipt_file i{
+	font-size:50px;
+}

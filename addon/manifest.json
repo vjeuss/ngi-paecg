@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "PaECG",
+  "version": "0.1",
+  "homepage_url": "https://privacy-as-expected.org/",
+  "background": {
+    "scripts": ["jquery.js","./libs/SHAACT.js","./libs/forge.js","background.js"]
+  },
+  "content_scripts": [{
+    "matches": [
+      "http://*/*", "https://*/*"
+    ],
+    "exclude_matches":["file:///*"],
+    "js": ["jquery.js","./libs/SHAACT.js","./libs/forge.js","content.js"]
+  }],
+  "browser_action": {
+    "default_title": "PaECG",
+    "browser_style": true,
+    "default_popup": "popup/index.html"
+  },
+  "content_security_policy": "script-src * 'self' 'unsafe-eval'; object-src 'self'",
+  "permissions": [
+    "https://*/*",
+    "http://*/*",
+    "tabs",
+    "downloads",
+    "storage",
+    "unlimitedStorage"
+  ]
+}
